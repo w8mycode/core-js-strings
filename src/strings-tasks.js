@@ -135,23 +135,23 @@ function repeatString(str, times) {
 }
 
 /**
- * Remove the occurrence of a substring from a string by start position of occurrence.
+ * Remove substring from string by position and length of substring.
  *
  * @param {string} str - The input string.
- * @param {string} value - The substring to remove from the string.
- * @param {int} index - The start position of occurrence in string.
- * @return {string} - The string with the first occurrence of the substring removed.
+ * @param {int} index - The start position of substring in string.
+ * @param {string} len - The length of substring to remove from the string.
+ * @return {string} - The string without removed substring.
  */
-function helperRemoveOccurrences(str, value, index) {
+function removeSubstring(str, index, len) {
   if (index < 0) {
     return str;
   }
 
   if (index === 0) {
-    return str.slice(index + value.length);
+    return str.slice(index + len);
   }
 
-  return str.slice(0, index) + str.slice(index + value.length);
+  return str.slice(0, index) + str.slice(index + len);
 }
 
 /**
@@ -169,7 +169,7 @@ function helperRemoveOccurrences(str, value, index) {
 function removeFirstOccurrences(str, value) {
   const index = str.indexOf(value);
 
-  return helperRemoveOccurrences(str, value, index);
+  return removeSubstring(str, index, value.length);
 }
 
 /**
@@ -187,7 +187,7 @@ function removeFirstOccurrences(str, value) {
 function removeLastOccurrences(str, value) {
   const index = str.lastIndexOf(value);
 
-  return helperRemoveOccurrences(str, value, index);
+  return removeSubstring(str, index, value.length);
 }
 
 /**
