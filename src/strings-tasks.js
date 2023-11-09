@@ -139,7 +139,7 @@ function repeatString(str, times) {
  *
  * @param {string} str - The input string.
  * @param {int} index - The start position of substring in string.
- * @param {string} len - The length of substring to remove from the string.
+ * @param {int} len - The length of substring to remove from the string.
  * @return {string} - The string without removed substring.
  */
 function removeSubstring(str, index, len) {
