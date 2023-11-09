@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const assert = require('assert');
 const tasks = require('../src/strings-tasks');
 it.optional = require('../extensions/it-optional');
