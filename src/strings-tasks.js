@@ -147,10 +147,6 @@ function removeSubstring(str, index, len) {
     return str;
   }
 
-  if (index === 0) {
-    return str.slice(index + len);
-  }
-
   return str.slice(0, index) + str.slice(index + len);
 }
 
@@ -255,6 +251,7 @@ function endsWith(str, substr) {
  */
 function formatTime(minutes, seconds) {
   const padLeadingZero = (value) => String(value).padStart(2, 0);
+
   return `${padLeadingZero(minutes)}:${padLeadingZero(seconds)}`;
 }
 
@@ -406,10 +403,10 @@ function reverseWords(str) {
  */
 function invertCase(str) {
   const isLower = (char) => char.toLowerCase() === char;
-  const invert = (char) =>
+  const invertCharCase = (char) =>
     isLower(char) ? char.toUpperCase() : char.toLowerCase();
 
-  return str.split('').reduce((acc, curr) => acc + invert(curr), '');
+  return str.split('').reduce((acc, curr) => acc + invertCharCase(curr), '');
 }
 
 /**
@@ -504,13 +501,13 @@ function encodeToRot13(str) {
 
   const getPos = (char) => alphabet.indexOf(char);
   const getCaseShift = (pos) => (pos >= len ? len : 0);
-  const isChar = (value) => alphabet.includes(value);
+  const isInAlphabet = (value) => alphabet.includes(value);
 
   const getShiftedChar = (pos) =>
     alphabet[((pos + rot13Shift) % len) + getCaseShift(pos)];
 
   const getShiftedValue = (value) =>
-    isChar(value) ? getShiftedChar(getPos(value)) : value;
+    isInAlphabet(value) ? getShiftedChar(getPos(value)) : value;
 
   return str.split('').reduce((acc, curr) => acc + getShiftedValue(curr), '');
 }
