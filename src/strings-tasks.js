@@ -325,7 +325,7 @@ function countVowels(str) {
   return str
     .toLowerCase()
     .split('')
-    .reduce((sum, current) => (isVowel(current) ? sum + 1 : sum), 0);
+    .filter((char) => isVowel(char)).length;
 }
 
 /**
